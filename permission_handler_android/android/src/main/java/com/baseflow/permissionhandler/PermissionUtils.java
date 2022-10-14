@@ -15,6 +15,9 @@ import androidx.core.app.ActivityCompat;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Timer;
+
+import timber.log.Timber;
 
 public class PermissionUtils {
 
@@ -65,8 +68,8 @@ public class PermissionUtils {
                 return PermissionConstants.PERMISSION_GROUP_MANAGE_EXTERNAL_STORAGE;
             case Manifest.permission.SYSTEM_ALERT_WINDOW:
                 return PermissionConstants.PERMISSION_GROUP_SYSTEM_ALERT_WINDOW;
-            case Manifest.permission.REQUEST_INSTALL_PACKAGES:
-                return PermissionConstants.PERMISSION_GROUP_REQUEST_INSTALL_PACKAGES;
+//            case Manifest.permission.REQUEST_INSTALL_PACKAGES:
+//                return PermissionConstants.PERMISSION_GROUP_REQUEST_INSTALL_PACKAGES;
             case Manifest.permission.ACCESS_NOTIFICATION_POLICY:
                 return PermissionConstants.PERMISSION_GROUP_ACCESS_NOTIFICATION_POLICY;
             case Manifest.permission.BLUETOOTH_SCAN:
@@ -249,8 +252,9 @@ public class PermissionUtils {
             case PermissionConstants.PERMISSION_GROUP_REQUEST_INSTALL_PACKAGES:
                 // The REQUEST_INSTALL_PACKAGES permission is introduced in Android M, meaning we should
                 // not handle permissions on pre Android M devices.
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M && hasPermissionInManifest(context, permissionNames, Manifest.permission.REQUEST_INSTALL_PACKAGES ))
-                    permissionNames.add(Manifest.permission.REQUEST_INSTALL_PACKAGES);
+//                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M && hasPermissionInManifest(context, permissionNames, Manifest.permission.REQUEST_INSTALL_PACKAGES ))
+//                    permissionNames.add(Manifest.permission.REQUEST_INSTALL_PACKAGES);
+                Timber.w("permission_utils: Install packages not supported");
                 break;
             case PermissionConstants.PERMISSION_GROUP_ACCESS_NOTIFICATION_POLICY:
                 // The REQUEST_NOTIFICATION_POLICY permission is introduced in Android M, meaning we should
